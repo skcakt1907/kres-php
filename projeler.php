@@ -1,16 +1,16 @@
 <?php require_once __DIR__ . '/inc/header.php'; $projeler = getList('projeler','durum=1','sira ASC'); $kategoriler = array_unique(array_column($projeler,'kategori')); ?>
 <section class="page-head">
   <div class="container">
-    <h1>Projelerimiz</h1>
-    <nav><ol class="breadcrumb"><li class="breadcrumb-item"><a href="<?= SITE_URL ?>/">Anasayfa</a></li><li class="breadcrumb-item active">Projeler</li></ol></nav>
+    <h1>Galeri</h1>
+    <nav><ol class="breadcrumb"><li class="breadcrumb-item"><a href="<?= SITE_URL ?>/">Anasayfa</a></li><li class="breadcrumb-item active">Galeri</li></ol></nav>
   </div>
 </section>
 
 <section>
   <div class="container">
     <div class="section-head">
-      <span class="badge-mini">Çalışmalarımız</span>
-      <h2>Tamamlanmış <span>Projeler</span></h2>
+      <span class="badge-mini">Galerimiz</span>
+      <h2>Etkinlik & Tesis <span>Galerimiz</span></h2>
     </div>
     <div class="text-center mb-4">
       <button class="btn btn-outline-secondary btn-sm me-2 filter-btn active" data-f="all">Tümü</button>

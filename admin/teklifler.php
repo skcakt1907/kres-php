@@ -1,17 +1,17 @@
 <?php
-$adminTitle='Fiyat Teklifleri';
+$adminTitle='Ön Kayıt Talepleri';
 require_once __DIR__ . '/inc/crud.php';
 
 if(isset($_GET['sil'])){
     $db->prepare("DELETE FROM teklifler WHERE id=?")->execute([(int)$_GET['sil']]);
-    adminFlash('Teklif silindi.');
+    adminFlash('Ön kayıt silindi.');
     header('Location: ' . SITE_URL . '/admin/teklifler.php'); exit;
 }
 if($_SERVER['REQUEST_METHOD']==='POST' && isset($_POST['id'])){
     csrf_check();
     $stmt = $db->prepare("UPDATE teklifler SET durum=?, notlar=? WHERE id=?");
     $stmt->execute([$_POST['durum'], $_POST['notlar'], (int)$_POST['id']]);
-    adminFlash('Teklif güncellendi.');
+    adminFlash('Ön kayıt güncellendi.');
     header('Location: ' . SITE_URL . '/admin/teklifler.php?id=' . (int)$_POST['id']); exit;
 }
 
@@ -40,7 +40,7 @@ require_once __DIR__ . '/inc/header.php';
 <?php if($detay): ?>
 <div class="card mb-4">
   <div class="card-header d-flex justify-content-between">
-    <div><i class="bi bi-clipboard-check me-2" style="color:var(--primary)"></i><strong>Teklif #<?= $detay['id'] ?></strong> — <?= e($detay['ad']) ?></div>
+    <div><i class="bi bi-clipboard-check me-2" style="color:var(--primary)"></i><strong>Ön Kayıt #<?= $detay['id'] ?></strong> — <?= e($detay['ad']) ?></div>
     <small class="text-muted"><?= date('d.m.Y H:i', strtotime($detay['tarih'])) ?></small>
   </div>
   <div class="card-body">
@@ -82,7 +82,7 @@ require_once __DIR__ . '/inc/header.php';
 
 <div class="card">
   <div class="card-header d-flex justify-content-between align-items-center flex-wrap gap-2">
-    <div><i class="bi bi-clipboard-check me-2"></i>Tüm Teklifler (<?= count($liste) ?>)</div>
+    <div><i class="bi bi-clipboard-check me-2"></i>Tüm Ön Kayıtlar (<?= count($liste) ?>)</div>
     <div class="btn-group btn-group-sm">
       <a href="teklifler.php" class="btn <?= !$durumFiltre?'btn-primary':'btn-outline-secondary' ?>">Tümü</a>
       <?php foreach($durumlar as $k=>$v): ?>

@@ -27,17 +27,17 @@ $hizmetMenu = getList('hizmetler','durum=1','sira ASC');
         <li class="nav-item"><a class="nav-link <?= $current==='index.php'?'active':'' ?>" href="<?= SITE_URL ?>/">Anasayfa</a></li>
         <li class="nav-item"><a class="nav-link <?= $current==='hakkimizda.php'?'active':'' ?>" href="<?= SITE_URL ?>/hakkimizda">Hakkımızda</a></li>
         <li class="nav-item nav-dropdown">
-          <a class="nav-link <?= in_array($current,['hizmetler.php','hizmet-detay.php'])?'active':'' ?>" href="<?= SITE_URL ?>/hizmetler">Hizmetlerimiz <i class="bi bi-chevron-down ms-1" style="font-size:.7rem"></i></a>
+          <a class="nav-link <?= in_array($current,['hizmetler.php','hizmet-detay.php'])?'active':'' ?>" href="<?= SITE_URL ?>/hizmetler">Programlarımız <i class="bi bi-chevron-down ms-1" style="font-size:.7rem"></i></a>
           <div class="dropdown-panel">
             <?php foreach($hizmetMenu as $hm): ?>
               <a href="<?= SITE_URL ?>/hizmet-detay?slug=<?= e($hm['slug']) ?>"><i class="bi <?= e($hm['ikon']) ?>"></i><span><?= e($hm['baslik']) ?></span></a>
             <?php endforeach; ?>
           </div>
         </li>
-        <li class="nav-item"><a class="nav-link <?= in_array($current,['projeler.php','proje-detay.php'])?'active':'' ?>" href="<?= SITE_URL ?>/projeler">Projelerimiz</a></li>
+        <li class="nav-item"><a class="nav-link <?= in_array($current,['projeler.php','proje-detay.php'])?'active':'' ?>" href="<?= SITE_URL ?>/projeler">Galeri</a></li>
         <li class="nav-item"><a class="nav-link <?= in_array($current,['blog.php','blog-detay.php'])?'active':'' ?>" href="<?= SITE_URL ?>/blog">Blog</a></li>
         <li class="nav-item"><a class="nav-link <?= $current==='iletisim.php'?'active':'' ?>" href="<?= SITE_URL ?>/iletisim">İletişim</a></li>
-        <li class="nav-item"><a class="nav-link nav-cta" href="<?= SITE_URL ?>/teklif">Teklif Al <i class="bi bi-arrow-right ms-1"></i></a></li>
+        <li class="nav-item"><a class="nav-link nav-cta" href="<?= SITE_URL ?>/teklif">Ön Kayıt <i class="bi bi-arrow-right ms-1"></i></a></li>
       </ul>
     </div>
   </div>

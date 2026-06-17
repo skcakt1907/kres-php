@@ -20,7 +20,7 @@ RewriteRule ^admin/inc/ - [F,L]
 RewriteEngine On
 
 # Eğer site bir alt klasördeyse RewriteBase ayarla (canlıda kök ise / olur)
-RewriteBase /tema-master-php/
+RewriteBase /kres-php/
 
 # admin/ alt dizini dokunmadan geçsin — admin'de .php URL'leri ham çalışır
 RewriteRule ^admin/ - [L]

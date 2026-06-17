@@ -55,7 +55,7 @@ table thead th{background:#f8fafc;color:var(--dark);font-weight:600;border-botto
     'dashboard.php' => ['bi-speedometer2','Dashboard',0],
     'hizmetler.php' => ['bi-tools','Hizmetler',0],
     'projeler.php'  => ['bi-building','Projeler',0],
-    'teklifler.php' => ['bi-clipboard-check','Teklifler',$yeniTeklif],
+    'teklifler.php' => ['bi-clipboard-check','Ön Kayıtlar',$yeniTeklif],
     'blog.php'      => ['bi-newspaper','Blog',0],
     'referanslar.php'=> ['bi-chat-quote','Referanslar',0],
     'mesajlar.php'  => ['bi-envelope','Mesajlar',$yeniMesaj],

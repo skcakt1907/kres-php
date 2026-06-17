@@ -1,13 +1,13 @@
 -- ============================================
--- TEMA MASTER (Kurumsal/Hizmet Arketipi) — Kurulum SQL
--- Markasız ana şablon. Yeni tema için: DB adını + içerikleri değiştir.
--- Kullanım: phpMyAdmin > tema_master DB > Import
+-- KREŞ / ANAOKULU TEMASI — Kurulum SQL
+-- Tema Master (Kurumsal/Hizmet arketipi) tabanlı.
+-- Kullanım: phpMyAdmin > kres_db > Import  (veya: mysql -u root < kurulum.sql)
 -- ============================================
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
-CREATE DATABASE IF NOT EXISTS `tema_master` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE `tema_master`;
+CREATE DATABASE IF NOT EXISTS `kres_db` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE `kres_db`;
 
 -- ============ AYARLAR ============
 DROP TABLE IF EXISTS `ayarlar`;
@@ -17,25 +17,25 @@ CREATE TABLE `ayarlar` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `ayarlar` (`anahtar`,`deger`) VALUES
-('site_adi','Firma Adınız'),
-('site_baslik','Firma Adınız — Profesyonel Çözüm Ortağınız'),
-('site_aciklama','Sektöründe uzman ekibiyle kaliteli, güvenilir ve müşteri odaklı hizmet sunan firmanızın kurumsal tanıtım sitesi.'),
+('site_adi','Kreş Adınız'),
+('site_baslik','Kreş Adınız — Mutlu Çocuklar, Güvenli Yarınlar'),
+('site_aciklama','Oyun temelli eğitim, uzman öğretmen kadrosu ve güvenli tesisleriyle çocuğunuzun gelişimini destekleyen kreş ve anaokulu. 1-6 yaş gruplarına özel programlar.'),
 ('telefon','+90 555 000 00 00'),
 ('telefon2','+90 532 000 00 00'),
-('mail','info@firmaadiniz.com'),
-('adres','Merkez Mah. Örnek Cad. No:1, İlçe / İl'),
-('calisma_saati','Pzt - Cmt: 09:00 - 18:00'),
-('hakkimizda_kisa','Firmanız hakkında kısa bir tanıtım yazısı. Bu metni admin panelinden düzenleyebilirsiniz. Uzmanlık alanlarınızı ve değerlerinizi burada özetleyin.'),
-('hakkimizda_uzun','Firmanız hakkında detaylı tanıtım metni buraya gelir. Kuruluş hikayeniz, vizyonunuz, hizmet anlayışınız ve sizi rakiplerinizden ayıran özellikleriniz bu alanda anlatılır. Admin panelindeki Ayarlar bölümünden bu metni dilediğiniz gibi güncelleyebilirsiniz. Modern altyapı, uzman kadro ve müşteri memnuniyeti odaklı çalışma prensibimizle her ölçekte işi zamanında ve kaliteyle teslim ediyoruz.'),
-('misyon','Müşterilerimize sektör standartlarının üzerinde, güvenilir ve sürdürülebilir çözümler sunmak; her projede kalite ve memnuniyeti önceliklendirmek.'),
-('vizyon','Faaliyet gösterdiğimiz alanda öncü, tercih edilen ve güvenilir marka olmak; yenilikçi yaklaşımlarla sektöre değer katmak.'),
-('yil','10'),
-('proje_sayi','250'),
-('musteri_sayi','500'),
-('personel_sayi','25'),
+('mail','info@kresadiniz.com'),
+('adres','Merkez Mah. Neşe Sok. No:1, İlçe / İl'),
+('calisma_saati','Pzt - Cuma: 07:30 - 18:30'),
+('hakkimizda_kisa','Çocuklarımızın mutlu, özgüvenli ve meraklı bireyler olarak büyümesi için oyun temelli, sevgi dolu bir eğitim ortamı sunuyoruz. Güvenlik ve gelişim bizim için her şeyden önce gelir.'),
+('hakkimizda_uzun','Kreşimiz, okul öncesi eğitimde 14 yılı aşkın deneyimiyle her çocuğun biricik olduğuna inanır. Oyun temelli öğrenme yaklaşımımız, çocukların doğal merakını destekleyerek sosyal, duygusal, bilişsel ve fiziksel gelişimlerini bir bütün olarak ele alır. Uzman okul öncesi öğretmenlerimiz, hijyenik ve güvenli sınıflarımız, bahçe ve oyun alanlarımız, branş derslerimiz (İngilizce, müzik, jimnastik, satranç) ve dengeli beslenme programımızla çocuğunuza ikinci bir yuva sunuyoruz. Kameralı güvenlik sistemi ve düzenli veli bilgilendirmesiyle gönül rahatlığı sağlıyoruz.'),
+('misyon','Her çocuğa sevgi dolu, güvenli ve oyun temelli bir ortamda kendi potansiyelini keşfetme fırsatı sunmak; mutlu ve özgüvenli bireyler yetiştirmek.'),
+('vizyon','Okul öncesi eğitimde velilerin ilk tercihi olan, çağdaş pedagojik yaklaşımları benimseyen örnek bir kurum olmak.'),
+('yil','14'),
+('proje_sayi','1200'),
+('musteri_sayi','1000'),
+('personel_sayi','30'),
 ('facebook','#'),('instagram','#'),('twitter','#'),('linkedin','#'),('youtube','#');
 
--- ============ HİZMETLER ============
+-- ============ HİZMETLER (Eğitim Programları) ============
 DROP TABLE IF EXISTS `hizmetler`;
 CREATE TABLE `hizmetler` (
   `id` INT AUTO_INCREMENT PRIMARY KEY,
@@ -43,7 +43,7 @@ CREATE TABLE `hizmetler` (
   `slug` VARCHAR(180),
   `ozet` TEXT,
   `icerik` LONGTEXT,
-  `ikon` VARCHAR(60) DEFAULT 'bi-building',
+  `ikon` VARCHAR(60) DEFAULT 'bi-balloon',
   `gorsel` VARCHAR(255),
   `sira` INT DEFAULT 0,
   `durum` TINYINT DEFAULT 1,
@@ -51,14 +51,14 @@ CREATE TABLE `hizmetler` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `hizmetler` (`baslik`,`slug`,`ozet`,`icerik`,`ikon`,`gorsel`,`sira`) VALUES
-('Profesyonel Danışmanlık','profesyonel-danismanlik','İhtiyaçlarınıza özel, uzman ekibimizle profesyonel danışmanlık hizmeti.','Bu hizmetin detaylı açıklamasını admin panelinden düzenleyebilirsiniz. Deneyimli kadromuzla size en uygun çözümleri sunuyor, sürecin her aşamasında yanınızda oluyoruz.','bi-lightbulb','https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&q=80',1),
-('Proje Yönetimi','proje-yonetimi','Planlamadan teslime, projelerinizi uçtan uca profesyonelce yönetiyoruz.','Bu hizmetin detaylı açıklamasını admin panelinden düzenleyebilirsiniz. Zamanında teslim, bütçe kontrolü ve kalite yönetimi ilkelerimizle projelerinizi güvenle yürütüyoruz.','bi-diagram-3','https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80',2),
-('Teknik Servis & Destek','teknik-servis-destek','Hızlı, güvenilir ve kesintisiz teknik servis ve destek hizmeti.','Bu hizmetin detaylı açıklamasını admin panelinden düzenleyebilirsiniz. Uzman teknik ekibimizle sorunlarınıza hızlı çözüm üretiyor, kesintisiz destek sağlıyoruz.','bi-tools','https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=800&q=80',3),
-('Kurumsal Çözümler','kurumsal-cozumler','İşletmenize özel, ölçeklenebilir ve verimli kurumsal çözümler.','Bu hizmetin detaylı açıklamasını admin panelinden düzenleyebilirsiniz. Firmanızın ihtiyaçlarına göre tasarlanmış kurumsal çözümlerle verimliliğinizi artırıyoruz.','bi-building-gear','https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80',4),
-('Bakım & Onarım','bakim-onarim','Düzenli bakım ve hızlı onarım hizmetleriyle sürekliliği garanti ediyoruz.','Bu hizmetin detaylı açıklamasını admin panelinden düzenleyebilirsiniz. Periyodik bakım planları ve hızlı onarım hizmetimizle işlerinizin aksamasını önlüyoruz.','bi-wrench-adjustable','https://images.unsplash.com/photo-1530124566582-a618bc2615dc?w=800&q=80',5),
-('Anahtar Teslim Hizmet','anahtar-teslim-hizmet','Baştan sona tüm süreci üstlenip işinizi anahtar teslim tamamlıyoruz.','Bu hizmetin detaylı açıklamasını admin panelinden düzenleyebilirsiniz. Tek muhatap, eksiksiz koordinasyon ve garantili teslim ile sürecin tamamını sizin için yönetiyoruz.','bi-key','https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80',6);
+('Oyun Grubu (1-2 Yaş)','oyun-grubu','Minik bireylerin güvenli ve sevgi dolu ortamda sosyalleşmeye ilk adımlarını attığı grup.','Oyun grubumuzda 1-2 yaş çocuklarımız, duyusal etkinlikler ve güvenli oyun alanlarıyla anneden ayrılma sürecini yumuşak bir geçişle yaşar. Uzman bakıcı ve öğretmenlerimiz eşliğinde temel motor beceriler, paylaşma ve sosyalleşme desteklenir.','bi-emoji-smile','https://images.unsplash.com/photo-1596464716127-f2a82984de30?w=800&q=80',1),
+('Anaokulu Programı (3-6 Yaş)','anaokulu-programi','Okula hazırlık odaklı, oyun temelli ve gelişimsel anaokulu eğitim programı.','3-6 yaş grubumuzda çocuklarımız okuma-yazmaya hazırlık, matematik kavramları, doğa ve bilim etkinlikleriyle okula güçlü bir başlangıç yapar. Sosyal-duygusal gelişim ve özbakım becerileri program boyunca desteklenir.','bi-mortarboard','https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=800&q=80',2),
+('Montessori Atölyesi','montessori-atolyesi','Çocuğun kendi hızında öğrendiği, bağımsızlığı destekleyen Montessori yaklaşımı.','Özel hazırlanmış Montessori materyalleriyle çocuklarımız dokunarak, deneyerek ve seçerek öğrenir. Konsantrasyon, düzen ve bağımsız çalışma becerileri bu atölyede doğal bir akışla gelişir.','bi-puzzle','https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=800&q=80',3),
+('İngilizce & Branş Dersleri','ingilizce-brans-dersleri','Oyunlarla İngilizce, müzik, jimnastik ve satranç gibi gelişim destekleyici branşlar.','Alanında uzman branş öğretmenlerimiz eşliğinde çocuklarımız İngilizceyle oyun yoluyla tanışır; müzik, ritim, jimnastik ve satranç etkinlikleriyle hem eğlenir hem gelişir.','bi-translate','https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80',4),
+('Sanat & Yaratıcılık','sanat-yaraticilik','Boyama, el sanatları ve drama ile çocukların yaratıcılığını ortaya çıkaran atölye.','Resim, kil, kolaj ve drama etkinlikleriyle çocuklarımızın hayal gücünü ve ince motor becerilerini destekliyoruz. Her çocuk kendini özgürce ifade edebileceği güvenli bir ortam bulur.','bi-palette','https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=800&q=80',5),
+('Tam Gün & Yemek Hizmeti','tam-gun-yemek','Dengeli, diyetisyen onaylı menü ve tam gün bakım ile çalışan veliye tam destek.','Tam gün programımızda çocuklarımıza diyetisyen onaylı, dengeli ve taze hazırlanan öğünler sunulur. Öğle uykusu, dinlenme ve serbest oyun saatleriyle gün, çocuğun ritmine uygun şekilde planlanır.','bi-cup-hot','https://images.unsplash.com/photo-1490818387583-1baba5e638af?w=800&q=80',6);
 
--- ============ PROJELER / GALERİ ============
+-- ============ PROJELER / GALERİ (Etkinlikler & Tesisler) ============
 DROP TABLE IF EXISTS `projeler`;
 CREATE TABLE `projeler` (
   `id` INT AUTO_INCREMENT PRIMARY KEY,
@@ -74,12 +74,12 @@ CREATE TABLE `projeler` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `projeler` (`baslik`,`slug`,`kategori`,`gorsel`,`aciklama`,`tarih`,`sira`) VALUES
-('Örnek Proje 1','ornek-proje-1','Kategori A','https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800&q=80','Bu projenin açıklamasını admin panelinden düzenleyebilirsiniz.','2025',1),
-('Örnek Proje 2','ornek-proje-2','Kategori A','https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800&q=80','Bu projenin açıklamasını admin panelinden düzenleyebilirsiniz.','2025',2),
-('Örnek Proje 3','ornek-proje-3','Kategori B','https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80','Bu projenin açıklamasını admin panelinden düzenleyebilirsiniz.','2025',3),
-('Örnek Proje 4','ornek-proje-4','Kategori B','https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80','Bu projenin açıklamasını admin panelinden düzenleyebilirsiniz.','2024',4),
-('Örnek Proje 5','ornek-proje-5','Kategori C','https://images.unsplash.com/photo-1431540015161-0bf868a2d407?w=800&q=80','Bu projenin açıklamasını admin panelinden düzenleyebilirsiniz.','2024',5),
-('Örnek Proje 6','ornek-proje-6','Kategori C','https://images.unsplash.com/photo-1460472178825-e5240623afd5?w=800&q=80','Bu projenin açıklamasını admin panelinden düzenleyebilirsiniz.','2024',6);
+('Renkli Sınıflarımız','renkli-siniflarimiz','Tesisler','https://images.unsplash.com/photo-1567057419565-4349c49d8a04?w=800&q=80','Geniş, aydınlık ve çocuk dostu tasarlanmış, yaş gruplarına uygun renkli sınıflarımız.','Tesis',1),
+('Açık Hava Oyun Bahçesi','oyun-bahcesi','Tesisler','https://images.unsplash.com/photo-1597392582469-a697322d5c16?w=800&q=80','Güvenli zemin kaplaması ve eğitici oyun gruplarıyla donatılmış bahçemiz.','Tesis',2),
+('23 Nisan Şenliği','23-nisan-senligi','Etkinlik','https://images.unsplash.com/photo-1472162072942-cd5147eb3902?w=800&q=80','Çocuklarımızın gösterileriyle coşkuyla kutladığımız 23 Nisan etkinliğimizden kareler.','Etkinlik',3),
+('Bilim ve Keşif Günü','bilim-kesif-gunu','Etkinlik','https://images.unsplash.com/photo-1530021232320-687d8e3dba54?w=800&q=80','Basit deneylerle çocuklarımızın merakını besleyen keşif atölyesi etkinliğimiz.','Etkinlik',4),
+('Sanat Atölyesi Çalışmaları','sanat-atolyesi-calismalari','Etkinlik','https://images.unsplash.com/photo-1607453998774-d533f65dac99?w=800&q=80','Minik ellerden çıkan büyük eserler; resim ve el sanatları atölyemizden kareler.','Etkinlik',5),
+('Yıl Sonu Mezuniyet Töreni','yil-sonu-mezuniyet','Etkinlik','https://images.unsplash.com/photo-1587616211892-f743fcca64f9?w=800&q=80','Anaokulundan ilkokula uğurladığımız miniklerimizin gururlu mezuniyet töreni.','Etkinlik',6);
 
 -- ============ BLOG ============
 DROP TABLE IF EXISTS `blog`;
@@ -97,9 +97,9 @@ CREATE TABLE `blog` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `blog` (`baslik`,`slug`,`kategori`,`ozet`,`icerik`,`gorsel`,`tarih`) VALUES
-('Örnek Blog Yazısı Başlığı 1','ornek-blog-1','Genel','Blog yazınızın kısa özeti buraya gelir. Admin panelinden düzenleyebilirsiniz.','Blog yazınızın tam içeriği buraya gelir. Admin panelindeki Blog bölümünden yeni yazı ekleyebilir, mevcut yazıları düzenleyebilir veya silebilirsiniz.','https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=800&q=80','2026-05-01'),
-('Örnek Blog Yazısı Başlığı 2','ornek-blog-2','Genel','Blog yazınızın kısa özeti buraya gelir. Admin panelinden düzenleyebilirsiniz.','Blog yazınızın tam içeriği buraya gelir. Admin panelindeki Blog bölümünden yeni yazı ekleyebilir, mevcut yazıları düzenleyebilir veya silebilirsiniz.','https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=800&q=80','2026-04-15'),
-('Örnek Blog Yazısı Başlığı 3','ornek-blog-3','Genel','Blog yazınızın kısa özeti buraya gelir. Admin panelinden düzenleyebilirsiniz.','Blog yazınızın tam içeriği buraya gelir. Admin panelindeki Blog bölümünden yeni yazı ekleyebilir, mevcut yazıları düzenleyebilir veya silebilirsiniz.','https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&q=80','2026-03-20');
+('Çocuğunuzu Kreşe Hazırlamanın 6 Yolu','cocugu-krese-hazirlamak','Veli Rehberi','Kreşe başlama sürecini hem çocuğunuz hem de sizin için kolaylaştıracak pratik öneriler.','Kreşe başlamak, bir çocuğun hayatındaki ilk büyük adımlardan biridir. Bu geçişi kolaylaştırmak için kreşten önce kısa ayrılıklara alıştırmak, uyku ve beslenme düzenini okul saatlerine yaklaştırmak, çocuğunuzla kreş hakkında olumlu konuşmak ve veda ritüeli oluşturmak çok faydalıdır. Bu yazıda uyum sürecini kolaylaştıran 6 etkili yöntemi anlattık.','https://images.unsplash.com/photo-1544717297-fa95b6ee9643?w=800&q=80','2026-05-12'),
+('Oyun Temelli Öğrenme Neden Önemli?','oyun-temelli-ogrenme','Eğitim','Çocuklar oynayarak öğrenir. Oyunun erken çocukluk gelişimindeki kritik rolünü açıklıyoruz.','Oyun, çocuk için bir eğlence olmanın çok ötesinde temel bir öğrenme yoludur. Çocuklar oyun yoluyla problem çözmeyi, iş birliğini, dil becerilerini ve duygularını yönetmeyi öğrenir. Kreşimizde oyun temelli yaklaşımı benimsememizin nedeni budur. Bu yazıda oyunun bilişsel ve sosyal gelişime katkılarını ele aldık.','https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=800&q=80','2026-04-20'),
+('Sağlıklı Beslenme Alışkanlığı Erken Yaşta Başlar','saglikli-beslenme-erken-yas','Sağlık','Çocuğunuzun damak tadını ve sağlıklı beslenme alışkanlıklarını destekleyen ipuçları.','Erken çocukluk, sağlıklı beslenme alışkanlıklarının temellerinin atıldığı dönemdir. Renkli ve çeşitli sebze-meyveleri tabağa dahil etmek, çocuğu mutfakta sürece katmak ve örnek olmak en etkili yöntemlerdir. Kreşimizde diyetisyen onaylı menülerle çocuklarımıza dengeli beslenmeyi sevdiriyoruz.','https://images.unsplash.com/photo-1490818387583-1baba5e638af?w=800&q=80','2026-03-25');
 
 -- ============ REFERANSLAR ============
 DROP TABLE IF EXISTS `referanslar`;
@@ -114,9 +114,9 @@ CREATE TABLE `referanslar` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `referanslar` (`ad`,`unvan`,`yorum`,`foto`,`yildiz`) VALUES
-('Müşteri Adı 1','Ünvan / Firma','Müşteri yorumu buraya gelir. Admin panelinden düzenleyebilirsiniz. Memnuniyet ifadeleri güven oluşturur.','https://i.pravatar.cc/100?img=12',5),
-('Müşteri Adı 2','Ünvan / Firma','Müşteri yorumu buraya gelir. Admin panelinden düzenleyebilirsiniz. Memnuniyet ifadeleri güven oluşturur.','https://i.pravatar.cc/100?img=32',5),
-('Müşteri Adı 3','Ünvan / Firma','Müşteri yorumu buraya gelir. Admin panelinden düzenleyebilirsiniz. Memnuniyet ifadeleri güven oluşturur.','https://i.pravatar.cc/100?img=15',5);
+('Ayşe Yıldız','Elif''in annesi','Kızım buraya başladığından beri çok daha mutlu ve özgüvenli. Öğretmenleri ilgili, iletişimleri kuvvetli. Gönül rahatlığıyla bırakıyorum.','https://i.pravatar.cc/100?img=49',5),
+('Murat Demir','Can''ın babası','Güvenlik ve hijyen konusundaki titizlikleri içimizi rahatlattı. Oğlumuz her sabah severek gidiyor, bu bizim için en büyük gösterge.','https://i.pravatar.cc/100?img=53',5),
+('Selin Kaya','Defne''nin annesi','Oyun temelli eğitimleri sayesinde kızımın gelişimini gözle görülür şekilde takip ediyoruz. Etkinlikler ve veli bilgilendirmeleri harika.','https://i.pravatar.cc/100?img=31',5);
 
 -- ============ MESAJLAR ============
 DROP TABLE IF EXISTS `mesajlar`;
@@ -131,7 +131,7 @@ CREATE TABLE `mesajlar` (
   `tarih` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- ============ TEKLİFLER ============
+-- ============ TEKLİFLER (Ön Kayıt Talepleri) ============
 DROP TABLE IF EXISTS `teklifler`;
 CREATE TABLE `teklifler` (
   `id` INT AUTO_INCREMENT PRIMARY KEY,

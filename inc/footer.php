@@ -16,13 +16,13 @@
       <div class="col-lg-2 col-md-6">
         <h5>Kurumsal</h5>
         <a href="<?= SITE_URL ?>/hakkimizda">Hakkımızda</a>
-        <a href="<?= SITE_URL ?>/hizmetler">Hizmetler</a>
-        <a href="<?= SITE_URL ?>/projeler">Projeler</a>
+        <a href="<?= SITE_URL ?>/hizmetler">Programlarımız</a>
+        <a href="<?= SITE_URL ?>/projeler">Galeri</a>
         <a href="<?= SITE_URL ?>/blog">Blog</a>
         <a href="<?= SITE_URL ?>/iletisim">İletişim</a>
       </div>
       <div class="col-lg-3 col-md-6">
-        <h5>Hizmetler</h5>
+        <h5>Programlarımız</h5>
         <?php foreach (getList('hizmetler','durum=1','sira ASC',5) as $h): ?>
           <a href="<?= SITE_URL ?>/hizmet-detay?slug=<?= e($h['slug']) ?>"><?= e($h['baslik']) ?></a>
         <?php endforeach; ?>

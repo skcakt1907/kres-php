@@ -1,10 +1,10 @@
 /* ============ TEMA MASTER (Kurumsal/Hizmet) — Tema Stilleri ============ */
 :root{
-  --primary:#ea7c1c;
-  --primary-dark:#c66514;
-  --accent:#f5b800;
-  --dark:#0a0a0a;
-  --dark-2:#1a1a1a;
+  --primary:#f59e0b;
+  --primary-dark:#d97706;
+  --accent:#38bdf8;
+  --dark:#1e293b;
+  --dark-2:#334155;
   --gray:#6b7280;
   --light:#f4f4f5;
 }
@@ -53,7 +53,7 @@ a{text-decoration:none;transition:.25s}
 
 /* ===== HERO ===== */
 .hero{position:relative;min-height:calc(100vh - 12px);color:#fff;display:flex;align-items:center;overflow:hidden;margin-top:-88px;padding-top:88px}
-.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(115deg,rgba(10,10,10,.92) 0%,rgba(10,10,10,.78) 50%,rgba(10,10,10,.4) 100%),url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=85') center/cover}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(115deg,rgba(10,10,10,.92) 0%,rgba(10,10,10,.78) 50%,rgba(10,10,10,.4) 100%),url('https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=1920&q=85') center/cover}
 .hero .container{position:relative;z-index:2}
 .hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(234,124,28,.15);border:1px solid var(--primary);color:var(--primary);padding:.5rem 1.2rem;border-radius:50px;font-size:.82rem;font-weight:600;margin-bottom:1.5rem;letter-spacing:1.5px;text-transform:uppercase}
 .hero-badge i{font-size:.7rem}
@@ -114,7 +114,7 @@ section{padding:100px 0}
 
 /* ===== STATS ===== */
 .stats{background:var(--dark);color:#fff;padding:80px 0;position:relative;overflow:hidden}
-.stats::before{content:"";position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1600&q=80') center/cover;opacity:.08}
+.stats::before{content:"";position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=1600&q=80') center/cover;opacity:.08}
 .stat,.stat-item{text-align:center;color:#fff;position:relative}
 .stat i,.stat-item i{font-size:2.4rem;color:var(--primary);margin-bottom:1rem;display:block}
 .stat h3,.stat-item h3{color:#fff;font-size:3.2rem;font-weight:800;margin:0;line-height:1}
@@ -165,7 +165,7 @@ section{padding:100px 0}
 .blog-body p,.blog-card p{color:var(--gray);font-size:.92rem;margin:0}
 
 /* ===== PAGE HEAD ===== */
-.page-head{background:linear-gradient(rgba(10,10,10,.88),rgba(10,10,10,.92)),url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=80') center/cover;color:#fff;padding:200px 0 80px;text-align:center;margin-top:-88px}
+.page-head{background:linear-gradient(rgba(10,10,10,.88),rgba(10,10,10,.92)),url('https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=1600&q=80') center/cover;color:#fff;padding:200px 0 80px;text-align:center;margin-top:-88px}
 .page-head h1{color:#fff;font-size:3rem;margin-bottom:.7rem}
 .page-head .breadcrumb{justify-content:center;background:transparent;padding:0;margin:0}
 .page-head .breadcrumb a{color:var(--primary)}

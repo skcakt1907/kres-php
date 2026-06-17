@@ -2,13 +2,13 @@
 // ========== Veritabanı Ayarları ==========
 // Müşteri buradan kendi DB bilgilerini girer
 define('DB_HOST', 'localhost');
-define('DB_NAME', 'tema_master');
+define('DB_NAME', 'kres_db');
 define('DB_USER', 'root');
 define('DB_PASS', '');
 define('DB_CHARSET', 'utf8mb4');
 
 // ========== Site Sabitleri ==========
-define('SITE_URL', 'http://localhost/tema-master-php');
+define('SITE_URL', 'http://localhost/kres-php');
 define('UPLOADS', __DIR__ . '/../uploads');
 define('UPLOADS_URL', SITE_URL . '/uploads');
 

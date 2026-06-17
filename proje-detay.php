@@ -12,7 +12,7 @@ require_once __DIR__ . '/inc/header.php';
 <section class="page-head">
   <div class="container">
     <h1><?= e($p['baslik']) ?></h1>
-    <nav><ol class="breadcrumb"><li class="breadcrumb-item"><a href="<?= SITE_URL ?>/">Anasayfa</a></li><li class="breadcrumb-item"><a href="<?= SITE_URL ?>/projeler">Projeler</a></li><li class="breadcrumb-item active"><?= e($p['baslik']) ?></li></ol></nav>
+    <nav><ol class="breadcrumb"><li class="breadcrumb-item"><a href="<?= SITE_URL ?>/">Anasayfa</a></li><li class="breadcrumb-item"><a href="<?= SITE_URL ?>/projeler">Galeri</a></li><li class="breadcrumb-item active"><?= e($p['baslik']) ?></li></ol></nav>
   </div>
 </section>
 <section>
@@ -26,7 +26,7 @@ require_once __DIR__ . '/inc/header.php';
       </div>
       <div class="col-lg-4">
         <div class="service-card">
-          <h4>Diğer Projeler</h4>
+          <h4>Diğer Kareler</h4>
           <?php foreach($digerler as $d): ?>
             <a href="<?= SITE_URL ?>/proje-detay?slug=<?= e($d['slug']) ?>" class="d-flex gap-2 py-2" style="border-bottom:1px solid #eee">
               <img src="<?= e($d['gorsel']) ?>" style="width:60px;height:50px;object-fit:cover;border-radius:6px">
